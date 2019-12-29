@@ -8,12 +8,19 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
 var mongoose = require('mongoose')
-var mongoDB = 'mongodb+srv://panghu:panghu666@tigercluster-mdsfj.mongodb.net/local_library?retryWrites=true&w=majority'
-mongoose.connect(mongoDB,{useNewUrlParser:true})
+var mongoDB = "mongodb+srv://panghu:panghu666@tigercluster-mdsfj.mongodb.net/local_library?retryWrites=true&w=majority"
+mongoose.connect(mongoDB,{useNewUrlParser:true},function(err,db){
+  if(err){
+    console.log(err)
+  }else{
+    console.log('connected to' + mongoDB)
+  }
+})
 var db = mongoose.connection
 db.on('error',console.error.bind(console,'MongoDB connection error'))
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
