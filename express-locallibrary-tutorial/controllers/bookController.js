@@ -1,0 +1,33 @@
+var bookInstance = require('../models/book')
+
+exports.book_list = (req,res) => {
+    res.send('NOT IMPLEMENTED:book list')
+}
+
+exports.book_detail = (req,res) => {
+    res.send('NOT IMPLEMENTED:book detailes' + req.params.id)
+}
+
+exports.book_create_get = (req,res) => {
+    res.send('NOT IMPLEMENTED:book create GET')
+}
+
+exports.book_create_post = (req,res) => {
+    res.send('NOT IMPLEMENTED:book create POST')
+}
+
+exports.book_delete_get = (req,res) => {
+    res.send('NOT IMPLEMENTED:book delete GET')
+}
+
+exports.book_delet_post = (req,res) => {
+    res.send('NOT IMPLEMENTED:book delete POST')
+}
+
+exports.book_update_get = (req,res) => {
+    res.send('NOT IMPLEMENTED:book update GET')
+}
+
+exports.book_update_post = (req,res) => {
+    res.send('NOT IMPLEMENTED:book update POST')
+}
