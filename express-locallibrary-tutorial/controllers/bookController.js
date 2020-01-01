@@ -1,4 +1,8 @@
-var bookInstance = require('../models/book')
+var book = require('../models/book')
+
+exports.index = (req,res) => {
+    res.send('NOT IMPLEMENTED:Site Home Page')
+}
 
 exports.book_list = (req,res) => {
     res.send('NOT IMPLEMENTED:book list')
