@@ -29,7 +29,12 @@ exports.index = (req,res) => {
 }
 
 exports.book_list = (req,res) => {
-    res.send('NOT IMPLEMENTED:book list')
+    Book.find({},'title author')
+    .populate('author')
+    .exec((err,list_books) => {
+        if(err){return next(err)}
+        res.render('book-list',{title:'Book List',book_list:list_books})
+    })
 }
 
 exports.book_detail = (req,res) => {
