@@ -41,24 +41,24 @@ router.post('/author/:id/update',authorController.author_update_post)
 
 router.get('/author/:id',authorController.author_detail)
 
-router.get('authors',authorController.author_list)
+router.get('/authors',authorController.author_list)
 
 ///GENRE ROUTES///
-router.get('genre/create',genreController.genre_create_get)
+router.get('/genre/create',genreController.genre_create_get)
 
-router.post('genre/create',genreController.genre_create_post)
+router.post('/genre/create',genreController.genre_create_post)
 
-router.get('genre/:id/delete',genreController.genre_delete_get)
+router.get('/genre/:id/delete',genreController.genre_delete_get)
 
-router.post('genre/:id/delete',genreController.genre_delete_post)
+router.post('/genre/:id/delete',genreController.genre_delete_post)
 
-router.get('genre/:id/update',genreController.genre_update_get)
+router.get('/genre/:id/update',genreController.genre_update_get)
 
-router.post('genre/:id/update',genreController.genre_update_post)
+router.post('/genre/:id/update',genreController.genre_update_post)
 
-router.get('genre/:id',genreController.genre_detaile)
+router.get('/genre/:id',genreController.genre_detaile)
 
-router.get('genres',genreController.genre_list)
+router.get('/genres',genreController.genre_list)
 
 /// BOOKINSTANCE ROUTES ///
 
