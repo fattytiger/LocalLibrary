@@ -11,4 +11,9 @@ GenreSchema.virtual('url')
     return `/catalog/genre/${this._id}`
 })
 
+GenreSchema.virtual('genre_name')
+.get(function(){
+    return this.name
+})
+
 module.exports = mongoose.model('Genre',GenreSchema)
