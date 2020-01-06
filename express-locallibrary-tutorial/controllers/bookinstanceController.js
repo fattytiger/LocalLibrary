@@ -1,3 +1,5 @@
+const async = require('async')
+const book  = require('../models/book')
 const bookInstance = require('../models/bookinstance')
 
 exports.bookinstance_list = (req,res,next) => {
@@ -9,8 +11,18 @@ exports.bookinstance_list = (req,res,next) => {
         })
 }
 
-exports.bookinstance_detail = (req,res) => {
-    res.send('NOT IMPLEMENTED:bookinstance detail:' + req.params.id)
+exports.bookinstance_detail = (req,res,next) => {
+    bookInstance.findById(req.params.id)
+    .populate('book')
+    .exec((err,bookinstance) => {
+        if(err){return next(err)}
+        if(bookinstance == null){
+            let err = new Error('Book copy not found')
+            err.status = 404
+            return next(err)
+        }
+        res.render('bookinstance-detail',{title:`Copy:${bookinstance.book.title}`, bookinstance:bookinstance})
+    })
 }
 
 exports.bookinstance_create_get = (req,res) =>{
