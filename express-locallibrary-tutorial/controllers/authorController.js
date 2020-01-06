@@ -1,3 +1,5 @@
+const async  = require('async')
+const book   = require('../models/book')
 const Author = require('../models/author')
 exports.author_list = (req,res,next) => {
     Author.find()
@@ -8,8 +10,25 @@ exports.author_list = (req,res,next) => {
     })
 }
 
-exports.author_detail = (req,res) => {
-    res.send('NOT IMPLEMENTED:Author detail:' + req.params.id)
+exports.author_detail = (req,res,next) => {
+    async.parallel({
+        author:function(callback){
+            Author.findById(req.params.id)
+            .exec(callback)
+        },
+        authors_book:function(callback){
+            book.find({'author':req.params.id},'title summary')
+            .exec(callback)
+        }
+    },(err,result) => {
+        if(err){ return next(err) }
+        if(result.author == null){
+            let err = new Error('Author not found')
+            err.status = 404
+            return next(err)
+        }
+        res.render('author-detail',{title:'Author Detail',author:result.author,author_books:result.authors_book})
+    })
 }
 
 exports.author_create_get = (req,res) => {
